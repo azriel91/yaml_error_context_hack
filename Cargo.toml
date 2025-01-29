@@ -1,0 +1,20 @@
+[package]
+name = "yaml_error_context_hack"
+version = "0.1.0"
+description = "Returns the `serde_yaml` error location and message to pass to `miette`."
+documentation = "https://docs.rs/yaml_error_context_hack/"
+authors = ["Azriel Hoh <azriel91@gmail.com>"]
+edition = "2021"
+homepage = "https://github.com/azriel91/yaml_error_context_hack"
+repository = "https://github.com/azriel91/yaml_error_context_hack"
+readme = "README.md"
+categories = ["config"]
+keywords = ["serde", "yaml", "error"]
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+miette = "7.4.0"
+serde_yaml = "0.9.34"
+
+[dev-dependencies]
+serde = { version = "1.0.217", features = ["derive"] }
