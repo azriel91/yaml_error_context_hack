@@ -37,37 +37,35 @@ struct Outer {
     field_2: u32,
 }
 
-fn main() {
-    let file_contents = r#"---
+let file_contents = r#"---
 outer:
   field_1: 123
 # ^
 # '--- field_2 missing the first character of the first type that has `#[serde(flatten)]`.
 "#;
-    let error = serde_yaml::from_str::<Config>(&file_contents).unwrap_err();
-    let error_and_context = ErrorAndContext::new(file_contents, &error);
+let error = serde_yaml::from_str::<Config>(&file_contents).unwrap_err();
+let error_and_context = ErrorAndContext::new(file_contents, &error);
 
-    let loc_line = 3;
-    let loc_col = 3; // index 2 is column 3
+let loc_line = 3;
+let loc_col = 3; // index 2 is column 3
 
-    assert_eq!(
-        "outer: missing field `field_2` at line 3 column 3",
-        error.to_string()
-    );
-    assert_eq!(
-        ErrorAndContext {
-            error_span: Some(SourceOffset::from_location(
-                file_contents,
-                loc_line,
-                loc_col
-            )),
-            error_message: "outer: missing field `field_2`".to_string(),
-            context_span: None,
-        },
-        error_and_context,
-        "{error}"
-    );
-}
+assert_eq!(
+    "outer: missing field `field_2` at line 3 column 3",
+    error.to_string()
+);
+assert_eq!(
+    ErrorAndContext {
+        error_span: Some(SourceOffset::from_location(
+            file_contents,
+            loc_line,
+            loc_col
+        )),
+        error_message: "outer: missing field `field_2`".to_string(),
+        context_span: None,
+    },
+    error_and_context,
+    "{error}"
+);
 ```
 
 

@@ -131,7 +131,7 @@ outer:
 # ^
 # '--- field_2 missing the first character of the first type that has `#[serde(flatten)]`.
 "#;
-        let error = serde_yaml::from_str::<Config>(&file_contents).unwrap_err();
+        let error = serde_yaml::from_str::<Config>(file_contents).unwrap_err();
         let error_and_context = ErrorAndContext::new(file_contents, &error);
 
         let loc_line = 3;
@@ -182,7 +182,7 @@ outer:
 # ^
 # '-- field_2 missing on the first character of the wrapping first type that has `#[serde(flatten)]`.
 "#;
-        let error = serde_yaml::from_str::<Config>(&file_contents).unwrap_err();
+        let error = serde_yaml::from_str::<Config>(file_contents).unwrap_err();
         let error_and_context = ErrorAndContext::new(file_contents, &error);
 
         let loc_line = 4;
@@ -239,7 +239,7 @@ outer:
 # ^
 # '-- field_2 missing on the first character of the first type that has `#[serde(flatten)]`.
 "#;
-        let error = serde_yaml::from_str::<Config>(&file_contents).unwrap_err();
+        let error = serde_yaml::from_str::<Config>(file_contents).unwrap_err();
         let error_and_context = ErrorAndContext::new(file_contents, &error);
 
         let loc_line = 4;
@@ -304,7 +304,7 @@ outer:
 # '-- field_2 is always marked as missing on the first character of the
 #     first wrapping type. Ideally it would point to `field_1`'s position (line 6 col 5).
 "#;
-        let error = serde_yaml::from_str::<Config>(&file_contents).unwrap_err();
+        let error = serde_yaml::from_str::<Config>(file_contents).unwrap_err();
         let error_and_context = ErrorAndContext::new(file_contents, &error);
 
         let loc_line = 4;
@@ -353,7 +353,7 @@ outer:
 #        ^
 #        '-- source offset is here.
 "#;
-        let error = serde_yaml::from_str::<Config>(&file_contents).unwrap_err();
+        let error = serde_yaml::from_str::<Config>(file_contents).unwrap_err();
         let error_and_context = ErrorAndContext::new(file_contents, &error);
 
         let loc_line = 3;
