@@ -12,6 +12,9 @@ categories = ["config"]
 keywords = ["serde", "yaml", "error"]
 license = "MIT OR Apache-2.0"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 miette = "7.4.0"
 serde_yaml = "0.9.34"
